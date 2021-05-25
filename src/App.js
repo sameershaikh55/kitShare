@@ -8,7 +8,7 @@ import StepThree from "./components/StepThree";
 import Succes from "./components/Succes";
 
 function App() {
-	// MODAL STATES
+	// MODAL STATES.
 	const [open, setOpen] = React.useState(false);
 
 	// INPUT STATES
