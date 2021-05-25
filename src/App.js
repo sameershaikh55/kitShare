@@ -60,7 +60,11 @@ function App() {
 						<StepTwo inpData={inpData} handleChange={handleChange} />
 					</Step>
 					<Step label="Three Step">
-						<StepThree inpData={inpData} handleChange={handleChange} />
+						<StepThree
+							inpData={inpData}
+							handleChange={handleChange}
+							setActive={setActive}
+						/>
 					</Step>
 				</MultiStepForm>
 				<br />

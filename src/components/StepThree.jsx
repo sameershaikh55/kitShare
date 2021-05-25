@@ -1,7 +1,8 @@
 import { TextField } from "@material-ui/core";
 import React from "react";
+import { RiImageEditLine } from "react-icons/ri";
 
-const StepThree = ({ inpData, handleChange }) => {
+const StepThree = ({ inpData, handleChange, setActive }) => {
 	return (
 		<div className="stepThree">
 			<h2>Add Details</h2>
@@ -26,8 +27,10 @@ const StepThree = ({ inpData, handleChange }) => {
 			<br />
 			<div>
 				<h2>Product Image</h2>
+				<br />
 				<div className="imgContainer">
 					<img src={inpData.imageInp} alt="" />
+					<RiImageEditLine onClick={() => setActive(2)} className="editBtn" />
 				</div>
 			</div>
 		</div>

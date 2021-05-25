@@ -19,7 +19,9 @@ const StepTwo = ({ inpData, handleChange }) => {
 			<br />
 			<div className="imgContainer">
 				{(inpData.imageInp && (
-					<img src={inpData.imageInp} alt="Product Not Found" />
+					<>
+						<img src={inpData.imageInp} alt="Product Not Found" />
+					</>
 				)) || <img src={error} alt="" />}
 			</div>
 		</div>
