@@ -19,7 +19,9 @@ const Succes = ({ open, handleClose, inpData }) => {
 				aria-describedby="alert-dialog-slide-description"
 			>
 				<div className="successMain">
-					<img src={inpData.imageInp} alt="" />
+					<a href={inpData.productInp} target="blank">
+						<img src={inpData.imageInp} alt="" />
+					</a>
 					<div className="succesCont">
 						<h3>{inpData.productName}</h3>
 						<h5>{inpData.description}</h5>

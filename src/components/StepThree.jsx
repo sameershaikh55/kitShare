@@ -29,7 +29,9 @@ const StepThree = ({ inpData, handleChange, setActive }) => {
 				<h2>Product Image</h2>
 				<br />
 				<div className="imgContainer">
-					<img src={inpData.imageInp} alt="" />
+					<a href={inpData.productInp} target="blank">
+						<img src={inpData.imageInp} alt="" />
+					</a>
 					<RiImageEditLine onClick={() => setActive(2)} className="editBtn" />
 				</div>
 			</div>

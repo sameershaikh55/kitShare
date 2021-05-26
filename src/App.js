@@ -41,6 +41,7 @@ function App() {
 		setActive(1);
 		setInpData({
 			groupName: "",
+			productInp: "",
 			imageInp: "",
 			productName: "",
 			description: "",
