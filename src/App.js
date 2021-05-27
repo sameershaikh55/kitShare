@@ -49,22 +49,46 @@ function App() {
 	};
 	// MODAL HANDLES END
 	const [active, setActive] = useState(1);
+
+	const productUrl = inpData.imageInp.split("/");
+	if (productUrl.indexOf("dp") > 0) {
+		const dpIndex = productUrl.indexOf("dp");
+		var assin1 = `http://images.amazon.com/images/P/${
+			productUrl[dpIndex + 1]
+		}.01._SCLZZZZZZZ_.jpg`;
+	} else if (productUrl.indexOf("product") > 0) {
+		const dpIndex = productUrl.indexOf("product");
+		const productIdSplit = productUrl[dpIndex + 1].split("?");
+		var assin2 = `http://images.amazon.com/images/P/${productIdSplit[0]}.01._SCLZZZZZZZ_.jpg`;
+	}
+	const assin = assin1 || assin2;
+
 	return (
 		<>
-			<Succes handleClose={handleClose} open={open} inpData={inpData} />
+			<Succes
+				handleClose={handleClose}
+				open={open}
+				inpData={inpData}
+				assin={assin}
+			/>
 			<div className="formContainer">
 				<MultiStepForm activeStep={active}>
 					<Step label="First Step">
 						<StepOne inpData={inpData} handleChange={handleChange} />
 					</Step>
 					<Step label="Second Step">
-						<StepTwo inpData={inpData} handleChange={handleChange} />
+						<StepTwo
+							inpData={inpData}
+							handleChange={handleChange}
+							assin={assin}
+						/>
 					</Step>
 					<Step label="Three Step">
 						<StepThree
 							inpData={inpData}
 							handleChange={handleChange}
 							setActive={setActive}
+							assin={assin}
 						/>
 					</Step>
 				</MultiStepForm>

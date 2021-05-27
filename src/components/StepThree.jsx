@@ -2,12 +2,7 @@ import { TextField } from "@material-ui/core";
 import React from "react";
 import { RiImageEditLine } from "react-icons/ri";
 
-const StepThree = ({ inpData, handleChange, setActive }) => {
-	const productUrl = inpData.imageInp.split("/");
-	const dpIndex = productUrl.indexOf("dp");
-	var assin = `http://images.amazon.com/images/P/${
-		productUrl[dpIndex + 1]
-	}.01._SCTZZZZZZZ_.jpg`;
+const StepThree = ({ inpData, handleChange, setActive, assin }) => {
 	return (
 		<div className="stepThree">
 			<h2>Add Details</h2>

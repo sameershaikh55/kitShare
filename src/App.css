@@ -78,8 +78,8 @@
 
 .stepTwo .imgContainer {
 	margin: auto;
-	width: 180px;
-	height: 180px;
+	width: 220px;
+	height: 220px;
 	position: relative;
 }
 
@@ -120,7 +120,7 @@
 .stepThree .imgContainer {
 	margin: auto;
 	width: 220px;
-	height: 180px;
+	height: 220px;
 }
 .stepThree .imgContainer img {
 	width: 100%;
