@@ -8,6 +8,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const Succes = ({ open, handleClose, inpData }) => {
+	const productUrl = inpData.imageInp.split("/");
+	const dpIndex = productUrl.indexOf("dp");
+	var assin = `http://images.amazon.com/images/P/${
+		productUrl[dpIndex + 1]
+	}.01._SCTZZZZZZZ_.jpg`;
 	return (
 		<div>
 			<Dialog
@@ -19,8 +24,8 @@ const Succes = ({ open, handleClose, inpData }) => {
 				aria-describedby="alert-dialog-slide-description"
 			>
 				<div className="successMain">
-					<a href={inpData.productInp} target="blank">
-						<img src={inpData.imageInp} alt="" />
+					<a href={inpData.imageInp} target="blank">
+						<img src={assin} alt="" />
 					</a>
 					<div className="succesCont">
 						<h3>{inpData.productName}</h3>

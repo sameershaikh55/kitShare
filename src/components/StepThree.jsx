@@ -3,6 +3,11 @@ import React from "react";
 import { RiImageEditLine } from "react-icons/ri";
 
 const StepThree = ({ inpData, handleChange, setActive }) => {
+	const productUrl = inpData.imageInp.split("/");
+	const dpIndex = productUrl.indexOf("dp");
+	var assin = `http://images.amazon.com/images/P/${
+		productUrl[dpIndex + 1]
+	}.01._SCTZZZZZZZ_.jpg`;
 	return (
 		<div className="stepThree">
 			<h2>Add Details</h2>
@@ -29,8 +34,8 @@ const StepThree = ({ inpData, handleChange, setActive }) => {
 				<h2>Product Image</h2>
 				<br />
 				<div className="imgContainer">
-					<a href={inpData.productInp} target="blank">
-						<img src={inpData.imageInp} alt="" />
+					<a href={inpData.imageInp} target="blank">
+						<img src={assin} alt="" />
 					</a>
 					<RiImageEditLine onClick={() => setActive(2)} className="editBtn" />
 				</div>

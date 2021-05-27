@@ -76,14 +76,14 @@
 	width: 100%;
 }
 
-.imgContainer {
+.stepTwo .imgContainer {
 	margin: auto;
-	width: 280px;
-	height: 220px;
+	width: 180px;
+	height: 180px;
 	position: relative;
 }
 
-.imgContainer img {
+.stepTwo .imgContainer img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
@@ -117,12 +117,12 @@
 	width: 100%;
 }
 
-.imgContainer {
+.stepThree .imgContainer {
 	margin: auto;
-	width: 280px;
-	height: 220px;
+	width: 220px;
+	height: 180px;
 }
-.imgContainer img {
+.stepThree .imgContainer img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
@@ -131,6 +131,7 @@
 
 /* SUCCESS START */
 .MuiDialog-paperWidthSm {
+	min-width: 250px !important;
 	max-width: 500px !important;
 }
 .successMain {
