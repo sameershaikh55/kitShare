@@ -78,13 +78,10 @@ function App() {
 			const {
 				htmlInferred: { images, url },
 			} = await dataFetch.json();
-			console.log({ images, url }, "direct res");
 			setWebSer({ images, url });
 		}
 		// var assin = assin1 || assin2;
 	};
-
-	console.log(webSer, "state");
 
 	return (
 		<>
