@@ -11,6 +11,9 @@ function App() {
 	// MODAL STATES.
 	const [open, setOpen] = React.useState(false);
 
+	const [assin, setAssin] = useState();
+	const [webSer, setWebSer] = useState();
+
 	// INPUT STATES
 	const [inpData, setInpData] = useState({
 		groupName: "",
@@ -50,18 +53,38 @@ function App() {
 	// MODAL HANDLES END
 	const [active, setActive] = useState(1);
 
-	const productUrl = inpData.imageInp.split("/");
-	if (productUrl.indexOf("dp") > 0) {
-		const dpIndex = productUrl.indexOf("dp");
-		var assin1 = `http://images.amazon.com/images/P/${
-			productUrl[dpIndex + 1]
-		}.01._SCLZZZZZZZ_.jpg`;
-	} else if (productUrl.indexOf("product") > 0) {
-		const dpIndex = productUrl.indexOf("product");
-		const productIdSplit = productUrl[dpIndex + 1].split("?");
-		var assin2 = `http://images.amazon.com/images/P/${productIdSplit[0]}.01._SCLZZZZZZZ_.jpg`;
-	}
-	const assin = assin1 || assin2;
+	const handleSubmit = async () => {
+		const productUrl = inpData.imageInp.split("/");
+		if (productUrl.indexOf("dp") > 0) {
+			const dpIndex = productUrl.indexOf("dp");
+			var assin1 = `http://images.amazon.com/images/P/${
+				productUrl[dpIndex + 1]
+			}.01._SCLZZZZZZZ_.jpg`;
+			setAssin(assin1);
+		} else if (productUrl.indexOf("product") > 0) {
+			const dpIndex = productUrl.indexOf("product");
+			const productIdSplit = productUrl[dpIndex + 1].split("?");
+			var assin2 = `http://images.amazon.com/images/P/${productIdSplit[0]}.01._SCLZZZZZZZ_.jpg`;
+			setAssin(assin2);
+		} else if (
+			productUrl.indexOf("dp") <= 0 &&
+			productUrl.indexOf("product") <= 0
+		) {
+			const data = inpData.imageInp;
+			const data2 = encodeURIComponent(data);
+			const dataFetch = await fetch(
+				`http://opengraph.io/api/1.1/site/${data2}?app_id=1224dd6b-2a14-47ea-a3e3-5e46ca53cedc`
+			);
+			const {
+				htmlInferred: { images, url },
+			} = await dataFetch.json();
+			console.log({ images, url }, "direct res");
+			setWebSer({ images, url });
+		}
+		// var assin = assin1 || assin2;
+	};
+
+	console.log(webSer, "state");
 
 	return (
 		<>
@@ -70,6 +93,7 @@ function App() {
 				open={open}
 				inpData={inpData}
 				assin={assin}
+				webSer={webSer}
 			/>
 			<div className="formContainer">
 				<MultiStepForm activeStep={active}>
@@ -81,6 +105,8 @@ function App() {
 							inpData={inpData}
 							handleChange={handleChange}
 							assin={assin}
+							handleSubmit={handleSubmit}
+							webSer={webSer}
 						/>
 					</Step>
 					<Step label="Three Step">
@@ -89,6 +115,7 @@ function App() {
 							handleChange={handleChange}
 							setActive={setActive}
 							assin={assin}
+							webSer={webSer}
 						/>
 					</Step>
 				</MultiStepForm>

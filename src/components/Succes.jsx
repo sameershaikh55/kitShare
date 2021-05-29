@@ -2,12 +2,13 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import Slide from "@material-ui/core/Slide";
+import error from "../assets/error.png";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const Succes = ({ open, handleClose, inpData, assin }) => {
+const Succes = ({ open, handleClose, inpData, assin, webSer }) => {
 	return (
 		<div>
 			<Dialog
@@ -19,9 +20,20 @@ const Succes = ({ open, handleClose, inpData, assin }) => {
 				aria-describedby="alert-dialog-slide-description"
 			>
 				<div className="successMain">
-					<a href={inpData.imageInp} target="blank">
-						<img src={assin} alt="" />
-					</a>
+					{(webSer && (
+						<a href={webSer.url} target="blank">
+							<>
+								<img src={webSer.images[0]} alt="Product Not Found" />
+							</>
+						</a>
+					)) ||
+						(assin && (
+							<a href={inpData.imageInp} target="blank">
+								<>
+									<img src={assin} alt="Product Not Found" />
+								</>
+							</a>
+						)) || <img src={error} alt="" />}
 					<div className="succesCont">
 						<h3>{inpData.productName}</h3>
 						<h5>{inpData.description}</h5>

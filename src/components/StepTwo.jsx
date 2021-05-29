@@ -1,19 +1,30 @@
 import React from "react";
-import { TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import error from "../assets/error.png";
 
-const StepTwo = ({ inpData, handleChange, assin }) => {
+const StepTwo = ({ inpData, handleChange, assin, handleSubmit, webSer }) => {
 	return (
 		<div className="stepTwo">
 			<h2>Upload an Image</h2>
 			<br />
-			<TextField
-				name="imageInp"
-				value={inpData.imageInp}
-				onChange={handleChange}
-				className="inp"
-				label="Enter Product Link"
-			/>
+			<div className="ingInpContainer">
+				<TextField
+					name="imageInp"
+					value={inpData.imageInp}
+					onChange={handleChange}
+					className="inp"
+					label="Enter Product Link"
+				/>
+				<Button
+					id="btn2"
+					variant="contained"
+					className="btnSubmit"
+					onClick={handleSubmit}
+				>
+					Submit
+				</Button>
+			</div>
+			{/* <button onClick={handleSubmit}>submit</button> */}
 			{/* <TextField
 				name="productInp"
 				value={inpData.productInp}
@@ -32,15 +43,21 @@ const StepTwo = ({ inpData, handleChange, assin }) => {
 			/> */}
 			<br />
 			<br />
-			<br />
 			<div className="imgContainer">
-				{(inpData.imageInp && (
-					<a href={inpData.imageInp} target="blank">
+				{(webSer && (
+					<a href={webSer.url} target="blank">
 						<>
-							<img src={assin} alt="Product Not Found" />
+							<img src={webSer.images[0]} alt="Product Not Found" />
 						</>
 					</a>
-				)) || <img src={error} alt="" />}
+				)) ||
+					(assin && (
+						<a href={inpData.imageInp} target="blank">
+							<>
+								<img src={assin} alt="Product Not Found" />
+							</>
+						</a>
+					)) || <img src={error} alt="" />}
 			</div>
 		</div>
 	);

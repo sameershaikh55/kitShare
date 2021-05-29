@@ -63,6 +63,19 @@
 /* STEP ONE END */
 
 /* STEP TWO START */
+
+.ingInpContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.ingInpContainer .inp {
+	margin-right: 1rem;
+}
+.ingInpContainer .btnSubmit {
+	height: 35px;
+}
+
 .stepTwo .MuiInput-underline:after {
 	border-bottom: 2px solid orange;
 }
