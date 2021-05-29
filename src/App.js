@@ -41,6 +41,7 @@ function App() {
 
 	const handleClose = () => {
 		setOpen(false);
+		setWebSer();
 		setActive(1);
 		setInpData({
 			groupName: "",
